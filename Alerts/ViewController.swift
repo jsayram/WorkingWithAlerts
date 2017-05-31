@@ -30,14 +30,26 @@ class ViewController: UIViewController {
         /*STEP 1:
         --note title and message can be nil, sometimes you just want to present a tittle sometimes you want both
         */
-        let alert:UIAlertController = UIAlertController(title: "Tittle", message: "Message", preferredStyle: .alert)
+        let alert:UIAlertController = UIAlertController(title: "Tittle", message: "Message", preferredStyle: .alert) /* note that .alert can be changed to .actionSheet , when you type a "." ,
+            you will see the options listed for the type of alert*/
+        
+        ///Note you can have several actions for every one alert that you make
         /*STEP 2: create an action
          */ //note:UIAlertAction in handeler is handled with an unnamed parameter that is an underscore _:UIAlertActionbelow
         let action1:UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { (_:UIAlertAction) in
-            print("Cancel")
+            print("Cancelled!")
         }
+        //--creating another action, called action 2, slightly different from action1
+        let action2:UIAlertAction = UIAlertAction(title: "Delete", style: .destructive) { (_:UIAlertAction) in
+            print("You deleted the Stuff")
+        }
+        
         /*STEP3: Connect action to alert*/
         alert.addAction(action1)
+        //--step3: for action2
+        alert.addAction(action2)
+       
+        
         /*STEP4: present the view */
         self.present(alert,animated: true){
             print("Present complete")
